@@ -3,7 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-s() { docker compose exec -T standby psql -U postgres -d appdb -Atc "$1"; }
+s() { docker compose exec -T standby psql -U postgres -d appdb -qAtc "$1"; }
 
 echo "Stopping the primary (simulated failure)..."
 docker compose stop primary

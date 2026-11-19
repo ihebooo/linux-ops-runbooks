@@ -7,8 +7,8 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-p() { docker compose exec -T primary psql -U postgres -d appdb -Atc "$1"; }
-s() { docker compose exec -T standby psql -U postgres -d appdb -Atc "$1"; }
+p() { docker compose exec -T primary psql -U postgres -d appdb -qAtc "$1"; }
+s() { docker compose exec -T standby psql -U postgres -d appdb -qAtc "$1"; }
 
 wait_for() {  # wait_for <description> <command...>
   local what=$1; shift
