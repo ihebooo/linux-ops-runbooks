@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: ShellCheck all scripts
+        run: shellcheck scripts/*.sh labs/postgres-replication/*.sh
+
+  scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: disk_check.sh runs and returns a valid status
+        run: |
+          set +e
+          bash scripts/disk_check.sh -w 80 -c 90
+          rc=$?
+          echo "exit code: $rc"
+          [ "$rc" -le 2 ]
+      - name: cert_expiry_check.sh against a public site and a local cert
+        run: |
+          openssl req -x509 -newkey rsa:2048 -nodes -days 10 -subj "/CN=test" \
+            -keyout /tmp/test.key -out /tmp/test.pem 2>/dev/null
+          set +e
+          bash scripts/cert_expiry_check.sh -d 30 github.com:443 /tmp/test.pem
+          rc=$?
+          echo "exit code: $rc (1 expected: the 10-day test cert is inside the 30-day window)"
+          [ "$rc" -eq 1 ]
+
+  postgres-lab:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Start primary + standby
+        working-directory: labs/postgres-replication
+        run: docker compose up -d --wait
+      - name: Check replication, write on primary, read on standby
+        working-directory: labs/postgres-replication
+        run: ./verify.sh
+      - name: Restart the standby and check it streams again
+        working-directory: labs/postgres-replication
+        run: |
+          docker compose restart standby
+          ./verify.sh
+      - name: Fail over (promote the standby)
+        working-directory: labs/postgres-replication
+        run: ./failover.sh
+      - name: Logs on failure
+        if: failure()
+        working-directory: labs/postgres-replication
+        run: docker compose logs
+      - name: Clean up
+        if: always()
+        working-directory: labs/postgres-replication
+        run: docker compose down -v

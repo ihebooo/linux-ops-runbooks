@@ -1,0 +1,52 @@
+# PostgreSQL streaming replication lab: one primary, one hot standby.
+# Lab only - passwords are intentionally simple and the ports are bound to localhost.
+services:
+  primary:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: appdb
+    command:
+      - postgres
+      - -c
+      - wal_level=replica
+      - -c
+      - max_wal_senders=5
+      - -c
+      - max_replication_slots=5
+      - -c
+      - hot_standby=on
+    volumes:
+      - ./primary-init.sh:/docker-entrypoint-initdb.d/10-replication.sh:ro
+      - primary-data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d appdb"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  standby:
+    image: postgres:16
+    user: postgres
+    depends_on:
+      primary:
+        condition: service_healthy
+    environment:
+      PGPASSWORD: replicator
+    entrypoint: ["/bin/bash", "/standby-entrypoint.sh"]
+    volumes:
+      - ./standby-entrypoint.sh:/standby-entrypoint.sh:ro
+      - standby-data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d appdb"]
+      interval: 2s
+      timeout: 3s
+      retries: 60
+
+volumes:
+  primary-data:
+  standby-data:
