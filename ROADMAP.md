@@ -1,42 +1,53 @@
 # Roadmap — one small improvement a day
 
-Each item is small enough for one evening (30–60 min) and is a real improvement, not filler.
-Ticked items are done.
+Goal: build small, focused open-source tools for **monitoring and optimizing Linux and
+PostgreSQL servers** that any admin can drop in and use, plus the runbooks behind them.
 
-## Week 1 — make this repo solid
+Each item is small enough for one evening (30–60 min) and is a real improvement, not filler.
+Ticked items are done. Every new repo gets: MIT license, README with a quick start, CI, and
+example output.
+
+## Week 1 — this repo + start `pg-health-report`
 - [x] Day 1 — runbooks, scripts, PostgreSQL replication lab, CI
 - [ ] Day 2 — `disk_check.sh`: `--json` output for monitoring tools + test in CI
-- [ ] Day 3 — lab: add a second standby and show `sync_state` (async vs sync with `synchronous_standby_names`)
-- [ ] Day 4 — runbook 14: rebuild a failed primary as standby with `pg_rewind` + lab exercise
-- [ ] Day 5 — `pg_backup_check.sh`: last successful `pg_dump`/base backup age, exit codes
-- [ ] Day 6 — lab: backup & point-in-time recovery (base backup + WAL archive) exercise
-- [ ] Day 7 — README: architecture diagram + "how I use this" section; tag `v0.1.0`
+- [ ] Day 3 — add MIT `LICENSE`, CI badge in README, tag `v0.1.0` with release notes
+- [ ] Day 4 — new repo `pg-health-report`: skeleton, MIT license, CI with a PostgreSQL 16 service container, `pg_health.sh --help`
+- [ ] Day 5 — `pg-health-report`: cache hit ratio, connections vs `max_connections`, database sizes (Markdown output)
+- [ ] Day 6 — `pg-health-report`: table bloat estimate + tables that need `VACUUM`/`ANALYZE` (dead tuples, last autovacuum)
+- [ ] Day 7 — `pg-health-report`: unused and duplicate indexes, with the space they waste
 
-## Week 2 — security & certificates
-- [ ] Day 8 — `cert_expiry_check.sh`: read targets from a file, CSV output
-- [ ] Day 9 — runbook 15: SSH hardening checklist (keys only, `AllowGroups`, fail2ban)
-- [ ] Day 10 — `user_audit.sh`: local users with UID ≥ 1000, last login, sudo rights, expired passwords
-- [ ] Day 11 — runbook 16: firewalld basics for a new server
-- [ ] Day 12 — lab: PostgreSQL with TLS (self-signed CA) + `hostssl` in `pg_hba.conf`
-- [ ] Day 13 — runbook 17: OpenSCAP scan and reading the report
-- [ ] Day 14 — CI: add `markdownlint` and a link checker for the runbooks
+## Week 2 — finish `pg-health-report`
+- [ ] Day 8 — `pg-health-report`: top queries from `pg_stat_statements` (total time, calls, mean) when the extension exists
+- [ ] Day 9 — `pg-health-report`: replication lag, inactive replication slots, transaction ID wraparound age
+- [ ] Day 10 — `pg-health-report`: each check gets a status (OK / WARN / CRIT) and a "what to do" hint
+- [ ] Day 11 — `pg-health-report`: `--format html` (single self-contained file) + example report in `docs/`
+- [ ] Day 12 — `pg-health-report`: CI seeds a demo database with bloat and an unused index and asserts they are reported
+- [ ] Day 13 — `pg-health-report`: README with screenshot, list of checks, required privileges (`pg_monitor`); tag `v0.1.0`
+- [ ] Day 14 — new repo `linux-db-tuning-check`: skeleton, MIT license, ShellCheck CI, `--help`
 
-## Week 3 — new repo `ansible-rhel-baseline`
-- [ ] Day 15 — repo skeleton, inventory, `ansible-lint` in CI
-- [ ] Day 16 — role `common`: timezone, NTP (chrony), packages
-- [ ] Day 17 — role `users`: admin group, SSH keys, sudo
-- [ ] Day 18 — role `unbound_cache`: local DNS cache (from runbook 07)
-- [ ] Day 19 — role `hardening`: sshd config, firewalld, SELinux enforcing
-- [ ] Day 20 — Molecule tests on Rocky Linux in CI
-- [ ] Day 21 — README with "before/after" and tag `v0.1.0`
+## Week 3 — `linux-db-tuning-check`
+- [ ] Day 15 — checks: `vm.swappiness`, `vm.dirty_ratio`/`dirty_background_ratio`, overcommit
+- [ ] Day 16 — checks: Transparent Huge Pages, huge pages vs `shared_buffers`, NUMA
+- [ ] Day 17 — checks: I/O scheduler per disk, mount options (`noatime`), filesystem type
+- [ ] Day 18 — checks: ulimits for the DB user, open files, CPU governor / `tuned` profile
+- [ ] Day 19 — PostgreSQL config advice: `shared_buffers`, `effective_cache_size`, `work_mem`, `max_wal_size` from RAM/CPU, with the reasoning shown
+- [ ] Day 20 — `--json` output + exit codes, CI runs it in Rocky Linux and Ubuntu containers
+- [ ] Day 21 — README: every check explained (why it matters, how to fix); tag `v0.1.0`
 
-## Week 4 — RHCSA notes & monitoring
-- [ ] Day 22 — new repo `rhcsa-notes`: structure by exam objective
-- [ ] Day 23 — notes: users, groups, permissions, ACLs (+ practice tasks)
-- [ ] Day 24 — notes: storage (partitions, LVM, swap, fstab)
-- [ ] Day 25 — notes: systemd, journald, tuned, boot targets
-- [ ] Day 26 — notes: SELinux and networking (nmcli)
-- [ ] Day 27 — new repo `monitoring-stack`: Prometheus + node_exporter + Grafana compose
-- [ ] Day 28 — alert rules: disk, cert expiry (blackbox exporter), PostgreSQL up
-- [ ] Day 29 — dashboard JSON + screenshots in README
-- [ ] Day 30 — pin the best repos, update profile README, write a LinkedIn post about the month
+## Week 4 — `monitoring-in-a-box`
+- [ ] Day 22 — new repo `monitoring-in-a-box`: Docker Compose with Prometheus, node_exporter, Grafana; CI starts it and checks targets are up
+- [ ] Day 23 — add postgres_exporter + a demo PostgreSQL; alert rules: PostgreSQL down, replication lag, connections near the limit
+- [ ] Day 24 — add blackbox_exporter: HTTPS endpoint up + certificate expiry alerts
+- [ ] Day 25 — add Alertmanager with an example route (email / webhook), alert rules validated with `promtool` in CI
+- [ ] Day 26 — provisioned Grafana dashboards (Linux host + PostgreSQL) committed as JSON
+- [ ] Day 27 — README with screenshots and a "monitor your own server in 10 minutes" guide; tag `v0.1.0`
+
+## Week 5 — share and connect
+- [ ] Day 28 — new repo `zabbix-templates`: certificate expiry and PostgreSQL replication templates (YAML export) with README
+- [ ] Day 29 — new repo `ansible-role-unbound-cache`: local DNS cache role (from runbook 07) with Molecule test in CI
+- [ ] Day 30 — profile README: pin the four tools, add "Tools I built" section, link each release
+
+## Every week — done by me, not automated
+These carry my name in public, so I write and post them myself:
+- one article (LinkedIn / dev.to): e.g. the DNS/SNAT case study, "a PostgreSQL health check in one script"
+- one small contribution to an existing open-source project (docs fix, template, issue with a reproduction)
