@@ -1,6 +1,8 @@
 # linux-ops-runbooks
 
 [![CI](https://github.com/ihebooo/linux-ops-runbooks/actions/workflows/ci.yml/badge.svg)](https://github.com/ihebooo/linux-ops-runbooks/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/ihebooo/linux-ops-runbooks)](https://github.com/ihebooo/linux-ops-runbooks/releases)
 
 The runbooks, scripts and labs I use as a **2nd-level Linux & PostgreSQL administrator** —
 written from real day-to-day operations, made generic (no company names, hosts or data).
@@ -51,3 +53,7 @@ ERP file systems and daemons · long batch jobs · ticket queue.
 ERP transports · logs for developers · server deploy / decommission.
 
 **Planned:** maintenance windows · patching of servers excluded from auto-patching · major upgrades.
+
+## License
+
+[MIT](LICENSE) — use, copy and adapt freely. Changes are listed in [CHANGELOG.md](CHANGELOG.md).
