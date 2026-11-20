@@ -29,7 +29,7 @@ written from real day-to-day operations, made generic (no company names, hosts o
 
 | Script | What it does |
 |---|---|
-| [`disk_check.sh`](scripts/disk_check.sh) | local filesystems above a space **or inode** threshold, monitoring-style exit codes |
+| [`disk_check.sh`](scripts/disk_check.sh) | local filesystems above a space **or inode** threshold, monitoring-style exit codes, `--json` output |
 | [`cert_expiry_check.sh`](scripts/cert_expiry_check.sh) | days left on certificates of endpoints (`host:port`) or PEM files |
 | [`pg_long_queries.sh`](scripts/pg_long_queries.sh) | sessions running / in a transaction longer than N minutes, with blockers |
 | [`pg_replication_status.sh`](scripts/pg_replication_status.sh) | primary: standbys + lag · standby: WAL receiver + replay delay |

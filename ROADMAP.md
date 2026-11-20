@@ -9,7 +9,7 @@ example output.
 
 ## Week 1 — this repo + start `pg-health-report`
 - [x] Day 1 — runbooks, scripts, PostgreSQL replication lab, CI
-- [ ] Day 2 — `disk_check.sh`: `--json` output for monitoring tools + test in CI
+- [x] Day 2 — `disk_check.sh`: `--json` output for monitoring tools + test in CI
 - [ ] Day 3 — add MIT `LICENSE`, CI badge in README, tag `v0.1.0` with release notes
 - [ ] Day 4 — new repo `pg-health-report`: skeleton, MIT license, CI with a PostgreSQL 16 service container, `pg_health.sh --help`
 - [ ] Day 5 — `pg-health-report`: cache hit ratio, connections vs `max_connections`, database sizes (Markdown output)

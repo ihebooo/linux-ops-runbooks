@@ -23,6 +23,22 @@ jobs:
           rc=$?
           echo "exit code: $rc"
           [ "$rc" -le 2 ]
+      - name: disk_check.sh --json is valid JSON and matches the exit code
+        run: |
+          set +e
+          out=$(bash scripts/disk_check.sh --json -w 1 -c 99)
+          rc=$?
+          set -e
+          echo "$out" | jq .
+          echo "exit code: $rc (1 expected: every filesystem is above 1%)"
+          [ "$rc" -eq 1 ]
+          echo "$out" | jq -e '.status == "WARN" and (.filesystems | length > 0)'
+          echo "$out" | jq -e 'all(.filesystems[]; .space_pct >= 0 and .inode_pct >= 0)'
+      - name: disk_check.sh rejects bad arguments with exit 3
+        run: |
+          set +e
+          bash scripts/disk_check.sh -w 90 -c 80; rc=$?
+          [ "$rc" -eq 3 ]
       - name: cert_expiry_check.sh against a public site and a local cert
         run: |
           openssl req -x509 -newkey rsa:2048 -nodes -days 10 -subj "/CN=test" \
