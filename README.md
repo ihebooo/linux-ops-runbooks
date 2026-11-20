@@ -7,7 +7,17 @@
 The runbooks, scripts and labs I use as a **2nd-level Linux & PostgreSQL administrator** —
 written from real day-to-day operations, made generic (no company names, hosts or data).
 
+👉 **New here? Read the [user guide](USAGE.md)** — install, options, examples, monitoring integration.
+
 👉 What I have actually done with these: [EXPERIENCE.md](EXPERIENCE.md)
+
+## 🚀 Quick start
+
+```bash
+git clone https://github.com/ihebooo/linux-ops-runbooks.git && cd linux-ops-runbooks
+./scripts/disk_check.sh                          # disk space + inodes, exit 0/1/2
+./scripts/cert_expiry_check.sh example.com:443   # days left on a certificate
+```
 
 ## 📘 Runbooks
 
