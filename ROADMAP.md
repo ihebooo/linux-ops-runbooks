@@ -14,15 +14,15 @@ example output.
 - [x] Day 4 — new repo `pg-health-report`: skeleton, MIT license, CI with a PostgreSQL 16 service container, `pg_health.sh --help`
 - [x] Day 5 — `pg-health-report`: cache hit ratio, connections vs `max_connections`, database sizes (Markdown output)
 - [x] Day 6 — `pg-health-report`: table bloat estimate + tables that need `VACUUM`/`ANALYZE` (dead tuples, last autovacuum)
-- [ ] Day 7 — `pg-health-report`: unused and duplicate indexes, with the space they waste
+- [x] Day 7 — `pg-health-report`: unused and duplicate indexes, with the space they waste
 
 ## Week 2 — finish `pg-health-report`
-- [ ] Day 8 — `pg-health-report`: top queries from `pg_stat_statements` (total time, calls, mean) when the extension exists
-- [ ] Day 9 — `pg-health-report`: replication lag, inactive replication slots, transaction ID wraparound age
-- [ ] Day 10 — `pg-health-report`: each check gets a status (OK / WARN / CRIT) and a "what to do" hint
-- [ ] Day 11 — `pg-health-report`: `--format html` (single self-contained file) + example report in `docs/`
-- [ ] Day 12 — `pg-health-report`: CI seeds a demo database with bloat and an unused index and asserts they are reported
-- [ ] Day 13 — `pg-health-report`: README with screenshot, list of checks, required privileges (`pg_monitor`); tag `v0.1.0`
+- [x] Day 8 — `pg-health-report`: top queries from `pg_stat_statements` (total time, calls, mean) when the extension exists
+- [x] Day 9 — `pg-health-report`: replication lag, inactive replication slots, transaction ID wraparound age
+- [x] Day 10 — `pg-health-report`: each check gets a status (OK / WARN / CRIT) and a "what to do" hint
+- [x] Day 11 — `pg-health-report`: `--format html` (single self-contained file) + example report in `docs/`
+- [x] Day 12 — `pg-health-report`: CI seeds a demo database with bloat and an unused index and asserts they are reported
+- [x] Day 13 — `pg-health-report`: README with screenshot, list of checks, required privileges (`pg_monitor`); tag `v0.1.0`
 - [ ] Day 14 — new repo `linux-db-tuning-check`: skeleton, MIT license, ShellCheck CI, `--help`
 
 ## Week 3 — `linux-db-tuning-check`
