@@ -48,6 +48,8 @@ git clone https://github.com/ihebooo/linux-ops-runbooks.git && cd linux-ops-runb
 
 All scripts pass ShellCheck in CI.
 
+**Related tool:** [pg-health-report](https://github.com/ihebooo/pg-health-report) — one-script, read-only PostgreSQL health report (work in progress).
+
 ## 🧪 Labs
 
 - [**PostgreSQL streaming replication**](labs/postgres-replication/) — primary + hot standby in Docker Compose:
