@@ -12,8 +12,8 @@ example output.
 - [x] Day 2 — `disk_check.sh`: `--json` output for monitoring tools + test in CI
 - [x] Day 3 — add MIT `LICENSE`, CI badge in README, tag `v0.1.0` with release notes
 - [x] Day 4 — new repo `pg-health-report`: skeleton, MIT license, CI with a PostgreSQL 16 service container, `pg_health.sh --help`
-- [ ] Day 5 — `pg-health-report`: cache hit ratio, connections vs `max_connections`, database sizes (Markdown output)
-- [ ] Day 6 — `pg-health-report`: table bloat estimate + tables that need `VACUUM`/`ANALYZE` (dead tuples, last autovacuum)
+- [x] Day 5 — `pg-health-report`: cache hit ratio, connections vs `max_connections`, database sizes (Markdown output)
+- [x] Day 6 — `pg-health-report`: table bloat estimate + tables that need `VACUUM`/`ANALYZE` (dead tuples, last autovacuum)
 - [ ] Day 7 — `pg-health-report`: unused and duplicate indexes, with the space they waste
 
 ## Week 2 — finish `pg-health-report`
