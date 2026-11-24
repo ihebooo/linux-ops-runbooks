@@ -23,7 +23,7 @@ example output.
 - [x] Day 11 — `pg-health-report`: `--format html` (single self-contained file) + example report in `docs/`
 - [x] Day 12 — `pg-health-report`: CI seeds a demo database with bloat and an unused index and asserts they are reported
 - [x] Day 13 — `pg-health-report`: README with screenshot, list of checks, required privileges (`pg_monitor`); tag `v0.1.0`
-- [ ] Day 14 — new repo `linux-db-tuning-check`: skeleton, MIT license, ShellCheck CI, `--help`
+- [x] Day 14 — new repo [`linux-db-tuning-check`](https://github.com/ihebooo/linux-db-tuning-check): skeleton, MIT license, ShellCheck CI, `--help`
 
 ## Week 3 — `linux-db-tuning-check`
 - [ ] Day 15 — checks: `vm.swappiness`, `vm.dirty_ratio`/`dirty_background_ratio`, overcommit

@@ -48,7 +48,9 @@ git clone https://github.com/ihebooo/linux-ops-runbooks.git && cd linux-ops-runb
 
 All scripts pass ShellCheck in CI.
 
-**Related tool:** [pg-health-report](https://github.com/ihebooo/pg-health-report) — one-script, read-only PostgreSQL health report (work in progress).
+**Related tools:**
+- [pg-health-report](https://github.com/ihebooo/pg-health-report) — one-script, read-only PostgreSQL health report (v0.1.0).
+- [linux-db-tuning-check](https://github.com/ihebooo/linux-db-tuning-check) — read-only check of Linux kernel/OS settings for a database host (work in progress).
 
 ## 🧪 Labs
 
