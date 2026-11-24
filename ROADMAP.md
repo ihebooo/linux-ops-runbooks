@@ -26,13 +26,13 @@ example output.
 - [x] Day 14 — new repo [`linux-db-tuning-check`](https://github.com/ihebooo/linux-db-tuning-check): skeleton, MIT license, ShellCheck CI, `--help`
 
 ## Week 3 — `linux-db-tuning-check`
-- [ ] Day 15 — checks: `vm.swappiness`, `vm.dirty_ratio`/`dirty_background_ratio`, overcommit
-- [ ] Day 16 — checks: Transparent Huge Pages, huge pages vs `shared_buffers`, NUMA
-- [ ] Day 17 — checks: I/O scheduler per disk, mount options (`noatime`), filesystem type
-- [ ] Day 18 — checks: ulimits for the DB user, open files, CPU governor / `tuned` profile
-- [ ] Day 19 — PostgreSQL config advice: `shared_buffers`, `effective_cache_size`, `work_mem`, `max_wal_size` from RAM/CPU, with the reasoning shown
-- [ ] Day 20 — `--json` output + exit codes, CI runs it in Rocky Linux and Ubuntu containers
-- [ ] Day 21 — README: every check explained (why it matters, how to fix); tag `v0.1.0`
+- [x] Day 15 — checks: `vm.swappiness`, `vm.dirty_ratio`/`dirty_background_ratio`, overcommit
+- [x] Day 16 — checks: Transparent Huge Pages, huge pages vs `shared_buffers`, NUMA
+- [x] Day 17 — checks: I/O scheduler per disk, mount options (`noatime`), filesystem type
+- [x] Day 18 — checks: ulimits for the DB user, open files, CPU governor / `tuned` profile
+- [x] Day 19 — PostgreSQL config advice: `shared_buffers`, `effective_cache_size`, `work_mem`, `max_wal_size` from RAM/CPU, with the reasoning shown
+- [x] Day 20 — `--json` output + exit codes, CI runs it in Rocky Linux and Ubuntu containers
+- [x] Day 21 — README: every check explained (why it matters, how to fix); tag `v0.1.0`
 
 ## Week 4 — `monitoring-in-a-box`
 - [ ] Day 22 — new repo `monitoring-in-a-box`: Docker Compose with Prometheus, node_exporter, Grafana; CI starts it and checks targets are up
