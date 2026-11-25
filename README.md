@@ -50,7 +50,8 @@ All scripts pass ShellCheck in CI.
 
 **Related tools:**
 - [pg-health-report](https://github.com/ihebooo/pg-health-report) — one-script, read-only PostgreSQL health report (v0.1.0).
-- [linux-db-tuning-check](https://github.com/ihebooo/linux-db-tuning-check) — read-only check of Linux kernel/OS settings for a database host (work in progress).
+- [linux-db-tuning-check](https://github.com/ihebooo/linux-db-tuning-check) — read-only check of Linux kernel/OS settings for a database host (v0.1.0).
+- [monitoring-in-a-box](https://github.com/ihebooo/monitoring-in-a-box) — Prometheus + node_exporter + Grafana in one Docker Compose file, tested in CI (work in progress).
 
 ## 🧪 Labs
 
