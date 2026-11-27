@@ -37,7 +37,7 @@ example output.
 ## Week 4 — `monitoring-in-a-box`
 - [x] Day 22 — new repo [`monitoring-in-a-box`](https://github.com/ihebooo/monitoring-in-a-box): Docker Compose with Prometheus, node_exporter, Grafana; CI starts it and checks targets are up
 - [x] Day 23 — add postgres_exporter + a demo PostgreSQL; alert rules: PostgreSQL down, replication lag, connections near the limit
-- [ ] Day 24 — add blackbox_exporter: HTTPS endpoint up + certificate expiry alerts
+- [x] Day 24 — add blackbox_exporter: HTTPS endpoint up + certificate expiry alerts
 - [ ] Day 25 — add Alertmanager with an example route (email / webhook), alert rules validated with `promtool` in CI
 - [ ] Day 26 — provisioned Grafana dashboards (Linux host + PostgreSQL) committed as JSON
 - [ ] Day 27 — README with screenshots and a "monitor your own server in 10 minutes" guide; tag `v0.1.0`
